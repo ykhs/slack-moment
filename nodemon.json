@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "watch": [
+    "app",
+    "config",
+    "app.js"
+  ]
+}

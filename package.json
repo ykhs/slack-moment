@@ -1,6 +1,9 @@
-{
+p{
   "private": true,
   "version": "0.1.0",
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
     "node": "8.6.0"
   },

@@ -1,12 +1,12 @@
-import slack from '@slack/client'
-import pify from 'pify'
-import debugModule from 'debug'
+const slack = require('@slack/client');
+const pify = require('pify');
+const debugModule = require('debug');
 
 const debug = debugModule('slack-moment:slackUsers')
 
 const WebClient = slack.WebClient
 
-export default async function slackMembers (req, res, next) {
+module.exports = async function slackMembers (req, res, next) {
   const token = req.token
   const web = new WebClient(token)
 

@@ -1,4 +1,4 @@
-p{
+{
   "private": true,
   "version": "0.1.0",
   "workspaces": [
@@ -37,8 +37,6 @@ p{
     "cross-env": "3.1.4",
     "css-loader": "0.26.2",
     "csswring": "5.1.1",
-    "debug": "2.6.1",
-    "dotenv": "4.0.0",
     "eslint": "3.15.0",
     "eslint-config-standard": "6.2.1",
     "eslint-config-vue": "2.0.2",
@@ -48,8 +46,6 @@ p{
     "eslint-plugin-standard": "2.0.1",
     "eslint-plugin-vue": "2.0.1",
     "lerna": "2.4.0",
-    "morgan": "1.8.1",
-    "nodemon": "1.11.0",
     "npm-run-all": "4.0.1",
     "postcss-cli": "2.6.0",
     "postcss-easy-import": "2.0.0",
@@ -62,15 +58,11 @@ p{
     "webpack-dev-server": "2.3.0"
   },
   "dependencies": {
-    "@slack/client": "3.8.1",
     "axios": "0.15.3",
     "babel-cli": "6.23.0",
     "babel-polyfill": "6.23.0",
     "basic-auth-connect": "1.0.0",
-    "body-parser": "1.16.1",
     "bootstrap": "4.0.0-alpha.6",
-    "cookie-parser": "1.4.3",
-    "express": "4.14.1",
     "fecha": "2.3.0",
     "firebase": "3.6.10",
     "firebase-admin": "4.1.1",

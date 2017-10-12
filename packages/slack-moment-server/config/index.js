@@ -1,12 +1,9 @@
-import dotenv from 'dotenv'
-import path from 'path'
-import firebase from './firebase'
-
-dotenv.config()
+const path = require('path');
+require('dotenv').config();
 
 const env = process.env.NODE_ENV || 'development'
 
-export default {
+module.exports = {
   env: env,
   root: path.join(__dirname, '..'),
   basicAuth: process.env.BASIC_AUTH || null,
@@ -20,10 +17,5 @@ export default {
       'users:read',
       'team:read'
     ]
-  },
-  firebase: firebase
-}
-
-export { default as express } from './express'
-export { init as firebase } from './firebase'
-export { default as routes } from './routes'
+  }
+};

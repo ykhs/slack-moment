@@ -1,13 +1,13 @@
-import slack from '@slack/client'
-import firebase from 'firebase-admin'
-import pify from 'pify'
-import debugModule from 'debug'
-import config from '../../config'
+const slack = require('@slack/client');
+const firebase = require('firebase-admin');
+const pify = require('pify');
+const debugModule = require('debug');
+const config = require('../../config');
 
 const debug = debugModule('slack-moment:authSlackCallback')
 const WebClient = slack.WebClient
 
-export default async function authSlackCallback (req, res, next) {
+module.exports = async function authSlackCallback (req, res, next) {
   const code = req.query.code
 
   debug('Receive code', code)

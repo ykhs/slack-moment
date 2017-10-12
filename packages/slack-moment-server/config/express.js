@@ -1,11 +1,11 @@
-import path from 'path'
-import morgan from 'morgan'
-import cookieParser from 'cookie-parser'
-import bodyParser from 'body-parser'
-import basicAuth from 'basic-auth-connect'
-import config from './'
+const path = require('path');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const basicAuth = require('basic-auth-connect');
+const config = require('./');
 
-export default function (app) {
+module.exports = function (app) {
   if (config.env !== 'test') {
     app.use(morgan('dev'))
   }

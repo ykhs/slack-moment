@@ -1,6 +1,5 @@
-import express from 'express'
-import debugModule from 'debug'
-import * as config from './config'
+const express = require('express');
+const debugModule = require('debug');
 
 const port = process.env.PORT || 9000
 const app = express()
@@ -8,9 +7,9 @@ const debug = debugModule('slack-moment:app')
 
 module.expots = app
 
-config.express(app)
-config.firebase()
-config.routes(app)
+require('./config/express')(app);
+require('./config/firebase')();
+require('./config/routes')(app);
 
 listen()
 

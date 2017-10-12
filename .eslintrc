@@ -2,7 +2,7 @@
   "parser": "babel-eslint",
   "extends": [
     "vue",
-    "standard",
+    "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],

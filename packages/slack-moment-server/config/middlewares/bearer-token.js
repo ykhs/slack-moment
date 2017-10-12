@@ -1,4 +1,4 @@
-export default function beaderToken (req, res, next) {
+module.exports = function beaderToken (req, res, next) {
   let token = null
 
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {

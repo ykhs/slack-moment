@@ -1,11 +1,11 @@
-import path from 'path'
-import express from 'express'
+const path = require('path');
+const express = require('express');
 
-import config from './'
-import * as middlewares from './middlewares'
-import * as controllers from '../app/controllers'
+const config = require('./');
+const middlewares = require('./middlewares');
+const controllers = require('../app/controllers');
 
-export default function (app) {
+module.exports = function (app) {
   app.use(express.static(path.join(config.root, 'public')))
 
   app.get('/favicon.ico', controllers.sendEmpty)

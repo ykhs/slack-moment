@@ -11,16 +11,5 @@
   "plugins": [
     "transform-object-rest-spread",
     "transform-async-to-generator"
-  ],
-  "env": {
-    "server": {
-      "presets": [
-        ["env", {
-          "targets": {
-            "node": 6
-          }
-        }]
-      ]
-    }
-  }
+  ]
 }

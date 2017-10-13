@@ -3,13 +3,13 @@
   "license": "MIT",
   "version": "0.1.0",
   "scripts": {
-    "clean": "rimraf public/bundle.*",
+    "clean": "rimraf public/**/bundle.*",
     "build:js": "webpack",
     "build:css": "postcss -c postcss.config.js",
     "build": "npm-run-all -s clean -p build:*",
     "watch:js": "webpack --watch",
     "watch:css": "postcss -c postcss.config.js -w",
-    "watch": "npm-run-all -s clean watch:*",
+    "watch": "npm-run-all -s clean -p watch:*",
     "release:js": "cross-env NODE_ENV=production webpack",
     "release:css": "cross-env NODE_ENV=production postcss --config postcss.config.js",
     "release": "npm-run-all -s clean -p release:*"

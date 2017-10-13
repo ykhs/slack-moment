@@ -6,12 +6,11 @@ const middlewares = require('./middlewares');
 const controllers = require('../controllers');
 
 module.exports = function (app) {
-  app.use(express.static(path.join(config.root, 'public')))
+  const clientModulePath = path.resolve(config.root, '..', 'slack-moment-client');
+
+  app.use(express.static(path.resolve(clientModulePath, 'public')))
 
   app.get('/favicon.ico', controllers.sendEmpty)
-  app.get('/', controllers.renderDefault)
-  app.get('/channels', controllers.renderDefault)
-  app.get('/channels/:id', controllers.renderDefault)
 
   app.get('/auth/slack',
     middlewares.oauth2Client,
@@ -42,6 +41,10 @@ module.exports = function (app) {
     middlewares.bearerToken,
     controllers.slackTeamInfo
   )
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(clientModulePath, 'public', 'index.html'));
+  });
 
   app.use((req, res, next) => {
     res.status(404).render('404')

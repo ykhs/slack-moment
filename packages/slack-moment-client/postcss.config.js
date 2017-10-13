@@ -17,7 +17,7 @@ module.exports = {
   }[env],
   'local-plugins': true,
   input: './src/css/main.css',
-  output: './public/bundle.css',
+  output: './public/css/bundle.css',
   map: 'file',
   'postcss-easy-import': {
     root: './src/',

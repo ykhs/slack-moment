@@ -1,5 +1,5 @@
 const debugModule = require('debug');
-const config = require('../../config');
+const config = require('../config');
 
 const debug = debugModule('slack-moment:authSlack')
 

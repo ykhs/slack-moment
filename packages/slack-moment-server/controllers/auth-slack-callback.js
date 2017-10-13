@@ -2,7 +2,7 @@ const slack = require('@slack/client');
 const firebase = require('firebase-admin');
 const pify = require('pify');
 const debugModule = require('debug');
-const config = require('../../config');
+const config = require('../config');
 
 const debug = debugModule('slack-moment:authSlackCallback')
 const WebClient = slack.WebClient

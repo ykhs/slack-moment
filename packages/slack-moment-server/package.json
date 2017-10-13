@@ -6,8 +6,8 @@
     "node": "8.6.0"
   },
   "scripts": {
-    "server:dev": "cross-env DEBUG=slack-moment:* nodemon app.js",
-    "server:prod": "cross-env NODE_ENV=production node app.js"
+    "server:dev": "cross-env DEBUG=slack-moment:* nodemon bin/server.js",
+    "server:prod": "cross-env NODE_ENV=production node bin/server.js"
   },
   "dependencies": {
     "@slack/client": "3.8.1",

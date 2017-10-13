@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV || 'development'
 
 module.exports = {
   env: env,
-  root: path.join(__dirname, '..'),
+  root: path.resolve(__dirname, '..'),
   basicAuth: process.env.BASIC_AUTH || null,
   slack: {
     clientId: process.env.SLACK_CLIENT_ID,

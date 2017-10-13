@@ -3,7 +3,7 @@ const express = require('express');
 const debugModule = require('debug');
 
 if (process.env.NODE_ENV !== 'production') {
-  const envPath = path.resolve(path.join('..', '..', '.env'));
+  const envPath = path.resolve('..', '..', '.env');
 
   require('dotenv').config({
     path: envPath
@@ -16,9 +16,9 @@ const debug = debugModule('slack-moment:app')
 
 module.expots = app
 
-require('./config/express')(app);
-require('./config/firebase')();
-require('./config/routes')(app);
+require('../config/express')(app);
+require('../config/firebase')();
+require('../config/routes')(app);
 
 listen()
 

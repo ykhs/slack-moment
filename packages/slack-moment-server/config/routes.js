@@ -3,7 +3,7 @@ const express = require('express');
 
 const config = require('./');
 const middlewares = require('./middlewares');
-const controllers = require('../app/controllers');
+const controllers = require('../controllers');
 
 module.exports = function (app) {
   app.use(express.static(path.join(config.root, 'public')))

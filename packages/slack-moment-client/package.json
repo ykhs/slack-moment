@@ -1,0 +1,45 @@
+{
+  "name": "slack-moment-client",
+  "license": "MIT",
+  "version": "0.1.0",
+  "scripts": {
+    "clean": "rimraf public/**/bundle.*",
+    "build:js": "webpack",
+    "build:css": "postcss -c postcss.config.js",
+    "build": "npm-run-all -s clean -p build:*",
+    "watch:js": "webpack --watch",
+    "watch:css": "postcss -c postcss.config.js -w",
+    "watch": "npm-run-all -s clean -p watch:*",
+    "release:js": "cross-env NODE_ENV=production webpack",
+    "release:css": "cross-env NODE_ENV=production postcss --config postcss.config.js",
+    "release": "npm-run-all -s clean -p release:*"
+  },
+  "dependencies": {
+    "axios": "0.15.3",
+    "babel-polyfill": "6.23.0",
+    "bootstrap": "4.0.0-alpha.6",
+    "fecha": "2.3.0",
+    "firebase": "3.6.10",
+    "hover.css": "2.0.2",
+    "js-cookie": "2.1.3",
+    "nprogress": "0.2.0",
+    "vue": "2.2.0",
+    "vue-infinite-loading": "2.0.2",
+    "vue-router": "2.2.1",
+    "vuex": "2.1.3",
+    "vuex-router-sync": "4.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.7.2",
+    "css-loader": "0.26.2",
+    "csswring": "5.1.1",
+    "postcss-cli": "2.6.0",
+    "postcss-easy-import": "2.0.0",
+    "postcss-reporter": "3.0.0",
+    "uglifyjs-webpack-plugin": "1.0.0-beta.2",
+    "vue-loader": "latest",
+    "vue-template-compiler": "latest",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.3.0"
+  }
+}

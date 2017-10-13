@@ -1,9 +1,9 @@
-import debugModule from 'debug'
-import config from '../../config'
+const debugModule = require('debug');
+const config = require('../config');
 
 const debug = debugModule('slack-moment:authSlack')
 
-export default function authSlack (req, res) {
+module.exports = function authSlack (req, res) {
   const scope = config.slack.scope.join(',')
   debug(
     'Create authorization uri with option',

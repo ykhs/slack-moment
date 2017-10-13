@@ -1,7 +1,7 @@
-import simpleOauthModule from 'simple-oauth2'
-import config from '../'
+const simpleOauthModule = require('simple-oauth2');
+const config = require('../');
 
-export default function oauth2Client (req, res, next) {
+module.exports = function oauth2Client (req, res, next) {
   req.oauth2 = simpleOauthModule.create({
     client: {
       id: config.slack.clientId,

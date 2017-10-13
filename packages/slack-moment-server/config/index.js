@@ -1,14 +1,10 @@
-import dotenv from 'dotenv'
-import path from 'path'
-import firebase from './firebase'
-
-dotenv.config()
+const path = require('path');
 
 const env = process.env.NODE_ENV || 'development'
 
-export default {
+module.exports = {
   env: env,
-  root: path.join(__dirname, '..'),
+  root: path.resolve(__dirname, '..'),
   basicAuth: process.env.BASIC_AUTH || null,
   slack: {
     clientId: process.env.SLACK_CLIENT_ID,
@@ -20,10 +16,5 @@ export default {
       'users:read',
       'team:read'
     ]
-  },
-  firebase: firebase
-}
-
-export { default as express } from './express'
-export { init as firebase } from './firebase'
-export { default as routes } from './routes'
+  }
+};

@@ -2,8 +2,15 @@ const path = require('path')
 const webpack = require('webpack')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-require('dotenv').config()
 const env = process.env.NODE_ENV || 'development'
+
+if (env !== 'production') {
+  const envPath = path.resolve(path.join('..', '..', '.env'));
+
+  require('dotenv').config({
+    path: envPath
+  });
+}
 
 module.exports = {
   entry: ['babel-polyfill', './src/js/main.js'],
@@ -15,7 +22,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public', 'js')
   },
   module: {
     rules: [

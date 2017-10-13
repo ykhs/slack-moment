@@ -1,12 +1,12 @@
-import slack from '@slack/client'
-import pify from 'pify'
-import debugModule from 'debug'
+const slack = require('@slack/client');
+const pify = require('pify');
+const debugModule = require('debug');
 
 const debug = debugModule('slack-moment:slackChannelsHistory')
 
 const WebClient = slack.WebClient
 
-export default async function slackChannelsHistory (req, res, next) {
+module.exports = async function slackChannelsHistory (req, res, next) {
   const id = req.params.id
   const latest = req.query.latest
   const token = req.token

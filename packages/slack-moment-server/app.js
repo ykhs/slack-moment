@@ -1,5 +1,14 @@
+const path = require('path');
 const express = require('express');
 const debugModule = require('debug');
+
+if (process.env.NODE_ENV !== 'production') {
+  const envPath = path.resolve(path.join('..', '..', '.env'));
+
+  require('dotenv').config({
+    path: envPath
+  });
+}
 
 const port = process.env.PORT || 9000
 const app = express()

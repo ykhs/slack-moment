@@ -1,5 +1,4 @@
 const admin = require('firebase-admin');
-require('dotenv').config();
 
 const databaseURL = process.env.FIREBASE_DATABASE_URL;
 const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;

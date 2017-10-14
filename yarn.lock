@@ -1370,6 +1370,12 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
+eslint-config-prettier@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.6.0.tgz#f21db0ebb438ad678fb98946097c4bb198befccc"
+  dependencies:
+    get-stdin "^5.0.1"
+
 eslint-config-vue@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/eslint-config-vue/-/eslint-config-vue-2.0.2.tgz#a3ab1004899e49327a94c63e24d47a396b2f4848"
@@ -1409,6 +1415,13 @@ eslint-plugin-import@2.2.0:
     lodash.cond "^4.3.0"
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
+
+eslint-plugin-prettier@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.3.1.tgz#e7a746c67e716f335274b88295a9ead9f544e44d"
+  dependencies:
+    fast-diff "^1.1.1"
+    jest-docblock "^21.0.0"
 
 eslint-plugin-promise@3.4.2:
   version "3.4.2"
@@ -1559,6 +1572,10 @@ external-editor@^2.0.4:
     jschardet "^1.4.2"
     tmp "^0.0.33"
 
+fast-diff@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.1.2.tgz#4b62c42b8e03de3f848460b639079920695d0154"
+
 fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
@@ -1705,6 +1722,10 @@ get-port@^3.2.0:
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
+
+get-stdin@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-5.0.1.tgz#122e161591e21ff4c52530305693f20e6393a398"
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -2080,6 +2101,10 @@ isemail@1.x.x:
 isexe@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-1.1.2.tgz#36f3e22e60750920f5e7241a476a8c6a42275ad0"
+
+jest-docblock@^21.0.0:
+  version "21.2.0"
+  resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-21.2.0.tgz#51529c3b30d5fd159da60c27ceedc195faf8d414"
 
 joi@^6.10.1:
   version "6.10.1"

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const env = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
   env: env,
@@ -10,11 +10,6 @@ module.exports = {
     clientId: process.env.SLACK_CLIENT_ID,
     clientSecret: process.env.SLACK_CLIENT_SECRET,
     authCallbackURL: process.env.SLACK_AUTH_CALLBACK_URL,
-    scope: [
-      'channels:read',
-      'channels:history',
-      'users:read',
-      'team:read'
-    ]
+    scope: ['channels:read', 'channels:history', 'users:read', 'team:read']
   }
 };

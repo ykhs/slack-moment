@@ -10,20 +10,20 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-const port = process.env.PORT || 9000
-const app = express()
-const debug = debugModule('slack-moment:app')
+const port = process.env.PORT || 9000;
+const app = express();
+const debug = debugModule('slack-moment:app');
 
-module.expots = app
+module.expots = app;
 
 require('../config/express')(app);
 require('../config/firebase')();
 require('../config/routes')(app);
 
-listen()
+listen();
 
-function listen () {
-  if (app.get('env') === 'test') return
-  app.listen(port)
-  debug(`server started on port ${port}`)
+function listen() {
+  if (app.get('env') === 'test') return;
+  app.listen(port);
+  debug(`server started on port ${port}`);
 }

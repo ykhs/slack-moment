@@ -1,4 +1,4 @@
-import firebase from 'firebase'
-import config from './'
+import firebase from 'firebase';
+import config from './';
 
-firebase.initializeApp(config.firebase)
+firebase.initializeApp(config.firebase);

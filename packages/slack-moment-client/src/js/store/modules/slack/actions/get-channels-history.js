@@ -1,32 +1,32 @@
-import debugModule from 'debug'
-import initAxios from './init-axios'
+import debugModule from 'debug';
+import initAxios from './init-axios';
 
-const debug = debugModule('slack-moment:slack/getChannelsHistory')
+const debug = debugModule('slack-moment:slack/getChannelsHistory');
 
-export default async function getChannelsHistory (store, { id, latest }) {
-  store.dispatch('startLoading', 800, { root: true })
+export default async function getChannelsHistory(store, { id, latest }) {
+  store.dispatch('startLoading', 800, { root: true });
 
-  const path = `/slack/channels/${id}/history`
-  const { accessToken } = store.state
-  const axios = initAxios({ accessToken })
+  const path = `/slack/channels/${id}/history`;
+  const { accessToken } = store.state;
+  const axios = initAxios({ accessToken });
 
-  debug(`Request ${path}`)
+  debug(`Request ${path}`);
   const res = await axios.get(path, {
     params: {
       latest: latest
     }
-  })
-  debug(`Receive ${path}`, res)
+  });
+  debug(`Receive ${path}`, res);
 
-  const { messages, has_more: hasMore } = res.data
+  const { messages, has_more: hasMore } = res.data;
 
-  store.commit('setMessages', { id, messages })
+  store.commit('setMessages', { id, messages });
 
   if (hasMore) {
-    store.commit('addHasMore', id)
+    store.commit('addHasMore', id);
   } else {
-    store.commit('removeHasMore', id)
+    store.commit('removeHasMore', id);
   }
 
-  store.dispatch('stopLoading', 800, { root: true })
+  store.dispatch('stopLoading', 800, { root: true });
 }

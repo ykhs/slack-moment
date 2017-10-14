@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Index from './views/Index.vue'
-import Channels from './views/Channels.vue'
-import Channel from './views/Channel.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Index from './views/Index.vue';
+import Channels from './views/Channels.vue';
+import Channel from './views/Channel.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -22,11 +22,11 @@ export default new Router({
       component: Channel
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     }
   }
-})
+});

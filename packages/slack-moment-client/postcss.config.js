@@ -1,13 +1,9 @@
-const env = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
   root: './src/',
   use: {
-    development: [
-      'postcss-easy-import',
-      'autoprefixer',
-      'postcss-reporter'
-    ],
+    development: ['postcss-easy-import', 'autoprefixer', 'postcss-reporter'],
     production: [
       'postcss-easy-import',
       'autoprefixer',
@@ -23,10 +19,10 @@ module.exports = {
     root: './src/',
     glob: true,
     onImport: sources => {
-      global.watchCSS(sources, this.from)
+      global.watchCSS(sources, this.from);
     }
   },
   autoprefixer: {
     browsers: ['last 2 versions', 'IE 11']
   }
-}
+};

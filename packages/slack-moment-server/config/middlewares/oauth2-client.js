@@ -1,7 +1,7 @@
 const simpleOauthModule = require('simple-oauth2');
 const config = require('../');
 
-module.exports = function oauth2Client (req, res, next) {
+module.exports = function oauth2Client(req, res, next) {
   req.oauth2 = simpleOauthModule.create({
     client: {
       id: config.slack.clientId,
@@ -12,6 +12,6 @@ module.exports = function oauth2Client (req, res, next) {
       authorizePath: '/oauth/authorize',
       tokenPath: '/api/oauth.access'
     }
-  })
-  next()
-}
+  });
+  next();
+};

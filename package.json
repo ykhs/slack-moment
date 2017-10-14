@@ -1,13 +1,12 @@
 {
   "private": true,
   "version": "0.1.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "engines": {
     "node": "8.6.0"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "prebootstrap": "yarn install",
     "bootstrap": "lerna bootstrap",
     "lint": "eslint --ext .js,.vue src/js config app",
@@ -18,6 +17,9 @@
     "server:dev": "lerna run server:dev --stream",
     "server:prod": "lerna run server:prod --stream",
     "heroku-postbuild": "yarn run release"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": ["prettier --write", "git add"]
   },
   "dependencies": {
     "cross-env": "3.1.4",
@@ -33,14 +35,19 @@
     "babel-preset-env": "1.1.8",
     "dotenv": "4.0.0",
     "eslint": "3.15.0",
+    "eslint-config-prettier": "2.6.0",
     "eslint-config-vue": "2.0.2",
     "eslint-plugin-html": "2.0.1",
     "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-prettier": "2.3.1",
     "eslint-plugin-promise": "3.4.2",
     "eslint-plugin-standard": "2.0.1",
     "eslint-plugin-vue": "2.0.1",
+    "husky": "0.14.3",
     "lerna": "2.4.0",
+    "lint-staged": "4.2.3",
     "npm-run-all": "4.0.1",
+    "prettier": "1.7.4",
     "rimraf": "2.5.4"
   }
 }

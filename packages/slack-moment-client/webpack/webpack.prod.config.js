@@ -19,6 +19,7 @@ module.exports = merge(baseWebpackConfig, {
         FIREBASE_DATABASE_URL: JSON.stringify(process.env.FIREBASE_DATABASE_URL)
       }
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyJSPlugin({
       sourceMap: true
     })

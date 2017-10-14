@@ -17,6 +17,7 @@ module.exports = merge(baseWebpackConfig, {
         FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
         FIREBASE_DATABASE_URL: JSON.stringify(process.env.FIREBASE_DATABASE_URL)
       }
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 });

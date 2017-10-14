@@ -41,6 +41,7 @@
     "eslint-plugin-vue": "2.0.1",
     "lerna": "2.4.0",
     "npm-run-all": "4.0.1",
+    "prettier": "1.7.4",
     "rimraf": "2.5.4"
   }
 }

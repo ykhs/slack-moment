@@ -11,7 +11,8 @@
     "watch:css": "postcss -c postcss.config.js -w",
     "watch": "npm-run-all -s clean -p watch:*",
     "release:js": "cross-env NODE_ENV=production webpack",
-    "release:css": "cross-env NODE_ENV=production postcss --config postcss.config.js",
+    "release:css":
+      "cross-env NODE_ENV=production postcss --config postcss.config.js",
     "release": "npm-run-all -s clean -p release:*"
   },
   "dependencies": {
@@ -40,6 +41,7 @@
     "vue-loader": "latest",
     "vue-template-compiler": "latest",
     "webpack": "2.2.1",
-    "webpack-dev-server": "2.3.0"
+    "webpack-dev-server": "2.3.0",
+    "webpack-merge": "4.1.0"
   }
 }

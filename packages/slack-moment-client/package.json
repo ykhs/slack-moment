@@ -8,11 +8,9 @@
     "build": "npm-run-all -s clean build:webpack",
     "watch:webpack": "webpack --watch --config webpack/webpack.dev.config.js",
     "watch": "npm-run-all -s clean watch:webpack",
-    "release:js":
+    "release:webpack":
       "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
-    "release:css":
-      "cross-env NODE_ENV=production postcss --config postcss.config.js",
-    "release": "npm-run-all -s clean -p release:*"
+    "release": "npm-run-all -s clean release:webpack"
   },
   "dependencies": {
     "axios": "0.16.2",

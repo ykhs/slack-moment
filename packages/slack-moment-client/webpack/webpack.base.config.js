@@ -11,7 +11,7 @@ module.exports = {
     }
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, '..', 'public')
   },
   module: {
@@ -60,7 +60,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextWebpackPlugin(path.join('bundle.css')),
+    new ExtractTextWebpackPlugin(path.join('bundle.[hash].css')),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',

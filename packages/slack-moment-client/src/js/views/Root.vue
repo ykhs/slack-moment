@@ -13,8 +13,7 @@
         <template v-if="needShowSignIn">
           <hr class="my-4">
           <p>
-            まずはSlackアカウントでログインしてください。<br />
-            pxgridチームにのみ対応しています。
+            Slackアカウントでログインしてください。
           </p>
           <a href="/auth/slack">
             <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" />

@@ -1,11 +1,12 @@
 <template>
-  <div class="app">
+  <div class="SM-App">
     <app-header
       :user="user"
       :needShowSignIn="needShowSignIn"
       :signOut="signOut"
     ></app-header>
     <router-view :key='$route.fullPath'></router-view>
+    <app-footer></app-footer>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import {
   mapActions
 } from 'vuex'
 import AppHeader from './AppHeader.vue'
+import AppFooter from './AppFooter.vue'
 
 export default {
   name: 'App',
@@ -35,13 +37,14 @@ export default {
     ])
   },
   components: {
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>
 
 <style scoped>
-.app {
+.SM-App {
   min-height: 100vh;
 }
 </style>

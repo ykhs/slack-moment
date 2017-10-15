@@ -5,10 +5,12 @@
   "scripts": {
     "clean": "rimraf public/**/bundle.*",
     "build:js": "webpack --config webpack/webpack.dev.config.js",
-    "build:css": "postcss -c postcss.config.js",
+    "build:css":
+      "postcss src/css/main.css -c postcss.config.js -o public/css/bundle.css",
     "build": "npm-run-all -s clean -p build:*",
     "watch:js": "webpack --watch --config webpack/webpack.dev.config.js",
-    "watch:css": "postcss -c postcss.config.js -w",
+    "watch:css":
+      "postcss src/css/main.css -c postcss.config.js -o public/css/bundle.css -w",
     "watch": "npm-run-all -s clean -p watch:*",
     "release:js":
       "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",

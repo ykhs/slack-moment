@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <nav class="navbar navbar-light bg-faded">
+    <nav class="navbar navbar-light">
       <div class="container">
         <div class="d-flex justify-content-end">
           <div class="mr-auto">
@@ -20,9 +20,10 @@
 
             <template v-if="needShowSignIn">
               <span class="navbar-text">
-                <a class="btn btn-sm align-middle btn-outline-success" href="/auth/slack">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <!-- <a class="btn btn-sm align-middle btn-outline-success" href="/auth/slack">
                   Sign in
-                </a>
+                </a> -->
               </span>
             </template>
           </div>
@@ -42,3 +43,12 @@ export default {
   ]
 }
 </script>
+
+<style scoped>
+.header {
+  background-color: #00C9B7;
+}
+.navbar-brand {
+  font-weight: 700;
+}
+</style>

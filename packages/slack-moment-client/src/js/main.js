@@ -4,6 +4,7 @@ import App from './views/App';
 import router from './router';
 import store from './store';
 import './config/firebase';
+import './styles';
 
 store.dispatch('startLoading');
 

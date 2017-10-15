@@ -3,15 +3,11 @@
   "license": "MIT",
   "version": "0.1.0",
   "scripts": {
-    "clean": "rimraf public/**/bundle.*",
-    "build:js": "webpack --config webpack/webpack.dev.config.js",
-    "build:css":
-      "postcss src/css/main.css -c postcss.config.js -o public/css/bundle.css",
-    "build": "npm-run-all -s clean -p build:*",
-    "watch:js": "webpack --watch --config webpack/webpack.dev.config.js",
-    "watch:css":
-      "postcss src/css/main.css -c postcss.config.js -o public/css/bundle.css -w",
-    "watch": "npm-run-all -s clean -p watch:*",
+    "clean": "rimraf public/{css,fonts,js}/*",
+    "build:webpack": "webpack --config webpack/webpack.dev.config.js",
+    "build": "npm-run-all -s clean build:webpack",
+    "watch:webpack": "webpack --watch --config webpack/webpack.dev.config.js",
+    "watch": "npm-run-all -s clean watch:webpack",
     "release:js":
       "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
     "release:css":
@@ -24,6 +20,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "fecha": "2.3.1",
     "firebase": "4.5.1",
+    "font-awesome": "4.7.0",
     "hover.css": "2.2.1",
     "js-cookie": "2.1.4",
     "nprogress": "0.2.0",
@@ -37,8 +34,11 @@
     "autoprefixer": "7.1.5",
     "css-loader": "0.28.7",
     "csswring": "6.0.1",
+    "extract-text-webpack-plugin": "3.0.1",
+    "file-loader": "1.1.5",
     "postcss-cli": "4.1.1",
     "postcss-easy-import": "3.0.0",
+    "postcss-loader": "2.0.8",
     "postcss-reporter": "5.0.0",
     "vue-loader": "13.3.0",
     "vue-template-compiler": "2.5.2"

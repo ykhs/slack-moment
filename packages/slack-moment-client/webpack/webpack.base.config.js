@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill', './src/js/main.js'],
@@ -11,7 +12,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '..', 'public', 'js')
+    path: path.resolve(__dirname, '..', 'public')
   },
   module: {
     rules: [
@@ -51,13 +52,25 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: '../fonts/'
+              outputPath: 'fonts/'
             }
           }
         ]
       }
     ]
   },
-  plugins: [new ExtractTextWebpackPlugin(path.join('..', 'css', 'bundle.css'))],
+  plugins: [
+    new ExtractTextWebpackPlugin(path.join('bundle.css')),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/index.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      }
+    })
+  ],
   devtool: 'source-map'
 };

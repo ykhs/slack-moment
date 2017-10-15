@@ -57,7 +57,7 @@ import {
 } from 'vuex'
 
 export default {
-  name: 'Index',
+  name: 'Root',
   computed: {
     ...mapState(['user']),
     ...mapGetters(['needShowSignIn'])

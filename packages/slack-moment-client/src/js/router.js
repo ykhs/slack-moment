@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from './views/Index.vue';
+import Root from './views/Root.vue';
 import Channels from './views/Channels.vue';
 import Channel from './views/Channel.vue';
 
@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Index
+      component: Root
     },
     {
       path: '/channels',

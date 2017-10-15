@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'MyHeader',
+  name: 'AppHeader',
   props: [
     'needShowSignIn',
     'user',

@@ -1,10 +1,10 @@
 <template>
   <div class="app">
-    <my-header
+    <app-header
       :user="user"
       :needShowSignIn="needShowSignIn"
       :signOut="signOut"
-    ></my-header>
+    ></app-header>
     <router-view :key='$route.fullPath'></router-view>
   </div>
 </template>
@@ -15,7 +15,7 @@ import {
   mapGetters,
   mapActions
 } from 'vuex'
-import MyHeader from './components/MyHeader.vue'
+import AppHeader from './AppHeader.vue'
 
 export default {
   name: 'App',
@@ -35,7 +35,7 @@ export default {
     ])
   },
   components: {
-    MyHeader
+    AppHeader
   }
 }
 </script>

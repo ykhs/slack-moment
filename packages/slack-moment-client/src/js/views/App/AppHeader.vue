@@ -40,6 +40,7 @@ export default {
 
 <style scoped>
 .SM-AppHeader {
+  margin-bottom: 20px;
   padding-top: 12px;
   padding-bottom: 12px;
   color: rgba(255, 255, 255, 0.8);

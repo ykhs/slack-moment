@@ -1,24 +1,28 @@
 <template>
   <main class="main">
 
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-3">🌟📘🌟</h1>
-        <p class="lead">
-          Slack Momentは、Slackのログをまとめて書き出すサービスです。
-        </p>
-        <p>
-          まとめたログはMarkdownとして出てくるので、適当な場所に貼って残すといいと思います。
-        </p>
-        <template v-if="needShowSignIn">
-          <hr class="my-4">
-          <p>
-            Slackアカウントでログインしてください。
+    <div class="container">
+      <div class="card">
+        <div class="card-block p-5">
+          <p class="card-title">
+            Slack Momentは、Slackのログをまとめて書き出すサービスです。
           </p>
-          <a href="/auth/slack">
-            <img src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" />
-          </a>
-        </template>
+          <p class="card-text">
+            まとめたログはMarkdownとして出てくるので、適当な場所に貼って残すといいと思います。
+          </p>
+
+          <template v-if="needShowSignIn">
+            <hr class="my-4">
+            <p>
+              Slackアカウントでログインしてください。
+            </p>
+            <a href="/auth/slack" class="btn btn-info">
+              <i class="fa fa-lg fa-slack" aria-hidden="true"></i>
+              Slackアカウントでログイン
+            </a>
+          </template>
+
+        </div>
       </div>
     </div>
 

@@ -5,14 +5,12 @@ module.exports = {
   plugins: {
     development: {
       'postcss-easy-import': {},
-      autoprefixer: {},
-      'postcss-reporter': {}
+      autoprefixer: {}
     },
     production: {
       'postcss-easy-import': {},
       autoprefixer: {},
-      csswring: {},
-      'postcss-reporter': {}
+      csswring: {}
     }
   }[env],
   'local-plugins': true,

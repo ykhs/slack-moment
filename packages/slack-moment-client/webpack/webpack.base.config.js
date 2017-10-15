@@ -33,13 +33,17 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextWebpackPlugin.extract({
           use: [
-            { loader: 'css-loader', options: { importLoaders: 1 } },
+            {
+              loader: 'css-loader',
+              options: { importLoaders: 1, sourceMap: true }
+            },
             {
               loader: 'postcss-loader',
               options: {
                 config: {
                   path: './postcss.config.js'
-                }
+                },
+                sourceMap: true
               }
             }
           ]

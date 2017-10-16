@@ -1,43 +1,28 @@
 <template>
-  <main class="main" ref="main">
-    <div class="container">
+  <main>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout
+          justify-center
+          align-center
+        >
 
-      <p class="h5 mt-5">
-        まとめたいログを選んで下さい。
-      </p>
-      <p class="text-muted">
-        気になるログを選んでみましょう。<br />
-        下の方にたぶんMarkdownになって出てくると思うので、適当な場所に貼って残すといいと思います。
-      </p>
+          <v-list two-line>
+            <template v-for="(message, index) in messages">
+              <Message
+                :selectMessages="selectMessages"
+                :message="message"
+                :toggleSelectMessage="toggleSelectMessage"
+                :findMemberById="findMemberById"
+                :formatTs="formatTs"
+              ></Message>
+            </template>
+            <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
+          </v-list>
 
-      <div class="messages mt-5">
-        <div class="message-inner">
-
-          <template v-for="message in messages"">
-            <Message
-              :selectMessages="selectMessages"
-              :message="message"
-              :toggleSelectMessage="toggleSelectMessage"
-              :findMemberById="findMemberById"
-              :formatTs="formatTs"
-            ></Message>
-          </template>
-          <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
-        </div>
-      </div>
-
-      <div class="results mt-5">
-        <form>
-          <div class="form-group">
-            <textarea class="form-control" rows="20" readonly="true">{{ now }} に {{ channelNameLink }} で作成したまとめ。
-
-- - -
-
-<template v-for="message in formatMarkdownMessages">{{ message }}</template></textarea>
-          </div>
-        </form>
-      </div>
-    </div>
+        </v-layout>
+      </v-container>
+    </v-content>
   </main>
 </template>
 
@@ -150,7 +135,6 @@ export default {
         id: this.id,
         latest: latest.ts
       })
-      this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
     }
   },
   async created () {
@@ -166,20 +150,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.main {
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.messages {
-  height: 60vh;
-  overflow-y: scroll;
-  color: #292b2c;
-}
-
-textarea {
-  resize: none;
-}
-</style>

@@ -1,31 +1,24 @@
 <template>
-    <a
-      href="#"
-      class="message-wrapper p-1 hvr-underline-reveal"
-      @click.prevent="toggleSelectMessage(message.ts)"
-      :class="{ selected: isSelected }"
-    >
-      <div class="mt-2" :key="message.ts">
-        <div class="d-flex">
-          <div class="mr-2">
-            <img :src="(findMemberById(message.user).profile || {}).image_32" />
-          </div>
-          <div>
-            <p class="font-weight-bold small mb-1">
-              <span class="message-text mr-2">
-                {{ findMemberById(message.user).name }}
-              </span>
-              <span class="font-weight-normal text-muted">
-                {{ formatTs(message.ts) }}
-              </span>
-            </p>
-            <p class="message-text mb-1">
-              {{ message.text }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </a>
+  <v-list-tile
+    class="SM-Message"
+    avatar
+    :key="message.ts"
+    :class="{ selected: isSelected }"
+    @click.prevent="toggleSelectMessage(message.ts)"
+  >
+    <v-list-tile-avatar class="SM-Message__avatar">
+      <img :src="(findMemberById(message.user).profile || {}).image_32" />
+    </v-list-tile-avatar>
+    <v-list-tile-content class="SM-Message__content">
+      <v-list-tile-title class="SM-Message__title">
+        {{ message.text }}
+      </v-list-tile-title>
+      <v-list-tile-sub-title class="SM-Message__subTitle">
+        {{ findMemberById(message.user).name }} - {{ formatTs(message.ts) }}
+      </v-list-tile-sub-title>
+    </v-list-tile-content>
+  </v-list-tile>
+
 </template>
 
 <script>
@@ -47,19 +40,14 @@ export default {
 </script>
 
 <style scoped>
-.message-wrapper {
-  display: block;
+.SM-Message__title {
+  height: auto;
 }
-
-.message-wrapper:hover {
-  text-decoration: none;
+.SM-Message__title {
+  white-space: normal;
+  overflow: visible;
 }
-
-.message-text {
-  color: #292b2c;
-}
-
-.selected {
+.SM-Message.selected {
   background: #ececec;
 }
 </style>

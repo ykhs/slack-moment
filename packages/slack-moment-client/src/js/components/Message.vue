@@ -1,24 +1,26 @@
 <template>
-  <v-list-tile
-    class="SM-Message"
-    avatar
+  <v-layout
+    row
+    spacer
+    class="SM-Message py-2"
     :key="message.ts"
     :class="{ selected: isSelected }"
     @click.prevent="toggleSelectMessage(message.ts)"
   >
-    <v-list-tile-avatar class="SM-Message__avatar">
-      <img :src="(findMemberById(message.user).profile || {}).image_32" />
-    </v-list-tile-avatar>
-    <v-list-tile-content class="SM-Message__content">
-      <v-list-tile-title class="SM-Message__title">
+    <v-flex class="SM-Message__flexAvatar">
+      <v-avatar class="SM-Message__avatar mr-2">
+        <img :src="(findMemberById(message.user).profile || {}).image_32" />
+      </v-avatar>
+    </v-flex>
+    <v-flex class="SM-Message__flexContent">
+      <div class="SM-Message__title">
         {{ message.text }}
-      </v-list-tile-title>
-      <v-list-tile-sub-title class="SM-Message__subTitle">
+      </div>
+      <div class="SM-Message__subTitle">
         {{ findMemberById(message.user).name }} - {{ formatTs(message.ts) }}
-      </v-list-tile-sub-title>
-    </v-list-tile-content>
-  </v-list-tile>
-
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -40,15 +42,25 @@ export default {
 </script>
 
 <style scoped>
-.SM-Message a.list__tile {
-  height: auto;
+.SM-Message {
+  cursor: pointer;
+}
+.SM-Message:hover {
+  background-color: rgba(0, 0, 0, .12);
+}
+.SM-Message__flexAvatar {
+  flex-grow: 0;
 }
 .SM-Message__title {
-  height: auto;
   word-break: break-all;
   word-wrap: break-word;
   white-space: normal;
   overflow: visible;
+
+}
+.SM-Message__subTitle {
+  font-size: 14px;
+  color: rgba(0,0,0,.54);
 }
 .SM-Message.selected {
   background: #ececec;

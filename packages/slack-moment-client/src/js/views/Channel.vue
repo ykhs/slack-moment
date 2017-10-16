@@ -7,18 +7,20 @@
           <v-flex xs-6 class="SM-Messages">
             <v-card>
               <div class="SM-Messages__scroller">
-                <v-list two-line>
-                  <template v-for="(message, index) in messages">
-                    <Message
-                      :selectMessages="selectMessages"
-                      :message="message"
-                      :toggleSelectMessage="toggleSelectMessage"
-                      :findMemberById="findMemberById"
-                      :formatTs="formatTs"
-                    ></Message>
-                  </template>
-                  <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
-                </v-list>
+                <v-container>
+                  <v-layout column>
+                    <template v-for="(message, index) in messages">
+                      <Message
+                        :selectMessages="selectMessages"
+                        :message="message"
+                        :toggleSelectMessage="toggleSelectMessage"
+                        :findMemberById="findMemberById"
+                        :formatTs="formatTs"
+                      ></Message>
+                    </template>
+                    <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
+                  </v-layout>
+                </v-container>
               </div>
             </v-card>
           </v-flex>

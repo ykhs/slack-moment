@@ -64,6 +64,6 @@ export default {
 .SM-AppHeader__brand a {
   font-weight: 700;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
+  color: #fff;
 }
 </style>

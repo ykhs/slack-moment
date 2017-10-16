@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <v-text-field
       prepend-icon="search"
       hide-details
@@ -7,35 +8,29 @@
       autofocus
       v-model="search"
       placeholder="Search..."
+      class="my-2"
     ></v-text-field>
 
-    <template v-for="channel in filteredChannels">
-      <div class="card mt-3" :key="channel.id">
-        <div class="card-block">
-          <h4 class="card-title">
-            {{ channel.name }}
-          </h4>
-          <h6 class="card-subtitle mb-3 text-muted">
-            {{ channel.topic.value }}
-          </h6>
+    <v-list two-line>
+      <template v-for="(channel, index) in filteredChannels">
+        <v-list-tile
+          ripple
+          :to="'/channels/' + channel.id"
+          :key="channel.id"
+        >
+          <v-list-tile-content>
+            <v-list-tile-title>
+              {{ channel.name }}
+            </v-list-tile-title>
+            <v-list-tile-sub-title class="grey--text">
+              {{ channel.topic.value }}
+            </v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider v-if="index + 1 < filteredChannels.length" :key="channel.id"></v-divider>
+      </template>
+    </v-list>
 
-          <dl class="d-flex flex-row text-muted">
-            <dt class="mr-2">member: </dt>
-            <dd>
-              <template v-for="(id, index) in channel.members">
-                <span :key="id">
-                  {{ findMemberById(id).name }}
-                </span>
-              </template>
-            </dd>
-          </dl>
-
-          <router-link :to="channel.id" append class="btn btn-secondary btn-block">
-            このチャンネルをまとめる
-          </router-link>
-        </div>
-      </div>
-    </template>
   </div>
 </template>
 

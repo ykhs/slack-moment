@@ -2,19 +2,17 @@
   <main class="main">
     <v-content>
       <v-container>
-        <v-layout row wrap>
-          <v-flex xs-12>
-            <introduction v-if="needShowSignIn"></introduction>
+        <v-layout row>
+          <introduction v-if="needShowSignIn"></introduction>
 
-            <template v-if="user.name">
-              <v-card class="pa-4">
-                <contents-header>
-                  Channels
-                </contents-header>
-                <channels></channels>
-              </v-card>
-            </template>
-          </v-flex>
+          <template v-if="user.name">
+            <v-card class="pa-4">
+              <contents-header>
+                Channels
+              </contents-header>
+              <channels></channels>
+            </v-card>
+          </template>
         </v-layout>
       </v-container>
     </v-content>
@@ -40,24 +38,6 @@ export default {
     Introduction,
     Channels,
     ContentsHeader
-  },
-  data () {
-    return {
-      items: [
-        {
-          text: 'Dashboard',
-          disabled: false
-        },
-        {
-          text: 'Link 1',
-          disabled: false
-        },
-        {
-          text: 'Link 2',
-          disabled: true
-        }
-      ]
-    }
   }
 }
 </script>

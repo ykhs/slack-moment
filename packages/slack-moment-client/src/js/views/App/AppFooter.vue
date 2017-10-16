@@ -1,9 +1,10 @@
 <template>
-  <footer class="SM-AppFooter footer">
-    <div class="SM-AppFooter__container container">
+  <v-footer class="pa-3">
+    <v-spacer></v-spacer>
+    <div>
       &copy;2017 Slack Moment by ykhs
     </div>
-  </footer>
+  </v-footer>
 </template>
 
 <script>

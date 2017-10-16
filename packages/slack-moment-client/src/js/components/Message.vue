@@ -1,31 +1,26 @@
 <template>
-    <a
-      href="#"
-      class="message-wrapper p-1 hvr-underline-reveal"
-      @click.prevent="toggleSelectMessage(message.ts)"
-      :class="{ selected: isSelected }"
-    >
-      <div class="mt-2" :key="message.ts">
-        <div class="d-flex">
-          <div class="mr-2">
-            <img :src="(findMemberById(message.user).profile || {}).image_32" />
-          </div>
-          <div>
-            <p class="font-weight-bold small mb-1">
-              <span class="message-text mr-2">
-                {{ findMemberById(message.user).name }}
-              </span>
-              <span class="font-weight-normal text-muted">
-                {{ formatTs(message.ts) }}
-              </span>
-            </p>
-            <p class="message-text mb-1">
-              {{ message.text }}
-            </p>
-          </div>
-        </div>
+  <v-layout
+    row
+    spacer
+    class="SM-Message py-2"
+    :key="message.ts"
+    :class="{ selected: isSelected }"
+    @click.prevent="toggleSelectMessage(message.ts)"
+  >
+    <v-flex class="SM-Message__flexAvatar">
+      <v-avatar class="SM-Message__avatar mr-2">
+        <img :src="(findMemberById(message.user).profile || {}).image_32" />
+      </v-avatar>
+    </v-flex>
+    <v-flex class="SM-Message__flexContent">
+      <div class="SM-Message__title">
+        {{ message.text }}
       </div>
-    </a>
+      <div class="SM-Message__subTitle">
+        {{ findMemberById(message.user).name }} - {{ formatTs(message.ts) }}
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -47,19 +42,27 @@ export default {
 </script>
 
 <style scoped>
-.message-wrapper {
-  display: block;
+.SM-Message {
+  cursor: pointer;
 }
-
-.message-wrapper:hover {
-  text-decoration: none;
+.SM-Message:hover {
+  background-color: rgba(0, 0, 0, .12);
 }
-
-.message-text {
-  color: #292b2c;
+.SM-Message__flexAvatar {
+  flex-grow: 0;
 }
+.SM-Message__title {
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: visible;
 
-.selected {
+}
+.SM-Message__subTitle {
+  font-size: 14px;
+  color: rgba(0,0,0,.54);
+}
+.SM-Message.selected {
   background: #ececec;
 }
 </style>

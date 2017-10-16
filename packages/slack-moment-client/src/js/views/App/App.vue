@@ -1,5 +1,5 @@
 <template>
-  <div class="SM-App">
+  <v-app v-resize="onResize">
     <app-header
       :user="user"
       :needShowSignIn="needShowSignIn"
@@ -7,13 +7,14 @@
     ></app-header>
     <router-view :key='$route.fullPath'></router-view>
     <app-footer></app-footer>
-  </div>
+  </v-app>
 </template>
 
 <script>
 import {
   mapState,
   mapGetters,
+  mapMutations,
   mapActions
 } from 'vuex'
 import AppHeader from './AppHeader.vue'
@@ -34,7 +35,14 @@ export default {
       'watchAuth',
       'tokenSignInIfNeeded',
       'signOut'
-    ])
+    ]),
+    ...mapMutations(['setWindowSize']),
+    onResize () {
+      this.setWindowSize({
+        y: window.innerHeight,
+        x: window.innerWidth
+      });
+    }
   },
   components: {
     AppHeader,

@@ -1,43 +1,43 @@
 <template>
-  <main class="main" ref="main">
-    <div class="container">
+  <main>
+    <v-content>
+      <v-container fluid grid-list-md>
+        <v-layout row>
 
-      <p class="h5 mt-5">
-        まとめたいログを選んで下さい。
-      </p>
-      <p class="text-muted">
-        気になるログを選んでみましょう。<br />
-        下の方にたぶんMarkdownになって出てくると思うので、適当な場所に貼って残すといいと思います。
-      </p>
+          <v-flex xs-6 class="SM-Messages">
+            <v-card class="pa-2" :style="cardHeight">
+              <div class="SM-Messages__scroller">
+                <v-container>
+                  <v-layout column>
+                    <template v-for="(message, index) in messages">
+                      <Message
+                        :selectMessages="selectMessages"
+                        :message="message"
+                        :toggleSelectMessage="toggleSelectMessage"
+                        :findMemberById="findMemberById"
+                        :formatTs="formatTs"
+                      ></Message>
+                    </template>
+                    <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
+                  </v-layout>
+                </v-container>
+              </div>
+            </v-card>
+          </v-flex>
 
-      <div class="messages mt-5">
-        <div class="message-inner">
+          <v-flex xs-6 class="SM-Preview">
+            <v-card class="pa-4" :style="cardHeight">
+              <textarea
+                class="SM-Preview__textArea"
+                readonly
+                v-model="formattedMessages"
+              ></textarea>
+            </v-card>
+          </v-flex>
 
-          <template v-for="message in messages"">
-            <Message
-              :selectMessages="selectMessages"
-              :message="message"
-              :toggleSelectMessage="toggleSelectMessage"
-              :findMemberById="findMemberById"
-              :formatTs="formatTs"
-            ></Message>
-          </template>
-          <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
-        </div>
-      </div>
-
-      <div class="results mt-5">
-        <form>
-          <div class="form-group">
-            <textarea class="form-control" rows="20" readonly="true">{{ now }} に {{ channelNameLink }} で作成したまとめ。
-
-- - -
-
-<template v-for="message in formatMarkdownMessages">{{ message }}</template></textarea>
-          </div>
-        </form>
-      </div>
-    </div>
+        </v-layout>
+      </v-container>
+    </v-content>
   </main>
 </template>
 
@@ -54,6 +54,7 @@ import Message from '../components/Message.vue'
 export default {
   name: 'Channel',
   computed: {
+    ...mapState(['windowSize']),
     ...mapState('slack', [
       'accessToken',
       'selectMessages',
@@ -99,6 +100,13 @@ export default {
         })
         .map(message => message.markdown)
     },
+    formattedMessages () {
+      let result = `${this.now} に ${this.channelNameLink}で作成したまとめ。\n\n- - -\n\n`;
+      for (const m of this.formatMarkdownMessages) {
+        result += m;
+      }
+      return result;
+    },
     channelNameLink () {
       const { channel, team } = this
 
@@ -108,6 +116,12 @@ export default {
       const { domain } = team
 
       return `[#${channelName}](https://${domain}.slack.com/archives/${channel.name}/)`
+    },
+    cardHeight () {
+      const windowHeight = this.windowSize.y;
+      return {
+        height: `${windowHeight - 200}px`
+      };
     }
   },
   methods: {
@@ -150,7 +164,6 @@ export default {
         id: this.id,
         latest: latest.ts
       })
-      this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
     }
   },
   async created () {
@@ -168,18 +181,24 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  min-height: 100vh;
-  overflow: hidden;
+.SM-Messages {
+  width: 100%;
 }
-
-.messages {
-  height: 60vh;
+.SM-Preview {
+  width: 100%;
+}
+.SM-Messages__scroller {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
   overflow-y: scroll;
-  color: #292b2c;
+  flex: 1;
+  height: 100%;
 }
-
-textarea {
-  resize: none;
+.SM-Preview__textArea {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  background: #ececed;
 }
 </style>

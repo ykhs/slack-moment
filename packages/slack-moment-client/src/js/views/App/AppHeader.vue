@@ -1,30 +1,52 @@
 <template>
-  <header class="SM-AppHeader">
-    <div class="SM-AppHeader__container d-flex px-3 justify-content-between container">
+  <v-card flat class="SM-AppHeader teal lighten-1">
+    <v-container>
+      <v-layout row wrap>
 
-      <router-link class="SM-AppHeader__logo navbar-brand" to="/">
-        Slack Moment
-      </router-link>
+        <v-toolbar-title class="SM-AppHeader__brand headline">
+          <router-link to="/">
+            Slack Moment
+          </router-link>
+        </v-toolbar-title>
 
-      <div class="SM-AppHeader__menu">
-        <template v-if="user.name">
-          <span class="navbar-text mr-3">
-            Signed in as {{ user.name }}
-          </span>
-          <a class="btn btn-sm align-middle btn-outline-secondary" href="#" @click.prevent="signOut">
-            Sign out
-          </a>
-        </template>
+        <v-spacer></v-spacer>
 
-        <template v-if="needShowSignIn">
-          <a class="SM-AppHeader__signIn" href="/auth/slack">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-          </a>
-        </template>
-      </div>
+        <div class="SM-AppHeader__menu">
 
-    </div>
-  </header>
+          <template v-if="user.name">
+            <v-menu offset-y>
+              <v-avatar slot="activator">
+                <img :src="user.image_48">
+              </v-avatar>
+              <v-list>
+                <v-subheader>
+                  Signed in as {{ user.name }}
+                </v-subheader>
+                <v-list-tile>
+                  <v-list-tile-title>
+                    <a class="" href="#" @click.prevent="signOut">
+                      Sign out
+                    </a>
+                  </v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+            </v-menu>
+          </template>
+
+          <template v-if="needShowSignIn">
+            <v-tooltip bottom>
+              <v-btn icon large href="/auth/slack" slot="activator">
+                <v-icon medium color="white">fa-sign-in</v-icon>
+              </v-btn>
+              <span>Sign In</span>
+            </v-tooltip>
+          </template>
+
+        </div>
+
+      </v-layout>
+    </v-container>
+  </v-card>
 </template>
 
 <script>
@@ -39,20 +61,9 @@ export default {
 </script>
 
 <style scoped>
-.SM-AppHeader {
-  margin-bottom: 20px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: #00C9B7;
-}
-.SM-AppHeader__logo {
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.8);
+.SM-AppHeader__brand a {
   font-weight: 700;
-}
-.SM-AppHeader__signIn {
+  text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1.5em;
 }
 </style>

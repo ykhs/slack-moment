@@ -1,3 +1,16 @@
 body {
-  background-color: #ececed;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body:before {
+  content: '';
+  height: 265px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #26a69a;
+  transform: skewY(1deg);
+  transform-origin: top left;
 }

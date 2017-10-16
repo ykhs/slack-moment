@@ -1,5 +1,5 @@
 <template>
-  <div class="SM-App">
+  <v-app>
     <app-header
       :user="user"
       :needShowSignIn="needShowSignIn"
@@ -7,7 +7,7 @@
     ></app-header>
     <router-view :key='$route.fullPath'></router-view>
     <app-footer></app-footer>
-  </div>
+  </v-app>
 </template>
 
 <script>

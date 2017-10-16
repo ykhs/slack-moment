@@ -16,7 +16,7 @@
     "client:release": "lerna run release --stream",
     "server:dev": "lerna run server:dev --stream",
     "server:prod": "lerna run server:prod --stream",
-    "heroku-postbuild": "yarn bootstrap && yarn client:relase"
+    "heroku-postbuild": "yarn bootstrap && yarn client:release"
   },
   "lint-staged": {
     "*.{js,json,css}": ["prettier --write", "git add"]

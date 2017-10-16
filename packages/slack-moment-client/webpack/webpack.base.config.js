@@ -6,8 +6,7 @@ module.exports = {
   entry: ['babel-polyfill', './src/js/main.js'],
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.common',
-      nprogress$: 'nprogress/nprogress'
+      vue$: 'vue/dist/vue.common'
     }
   },
   output: {

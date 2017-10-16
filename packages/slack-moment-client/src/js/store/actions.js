@@ -1,5 +1,3 @@
-import nprogress from 'nprogress';
-
 export function startLoading(store) {
   const { isLoading } = store.state;
   const start = Date.now();
@@ -9,7 +7,6 @@ export function startLoading(store) {
     return;
   }
 
-  nprogress.start();
   store.commit('toggleLoading', true);
   store.commit('setLoadingStartAt', start);
 }
@@ -26,6 +23,5 @@ export function stopLoading(store, timeAllowed) {
   setTimeout(() => {
     store.commit('toggleLoading', false);
     store.commit('resetLoadingStartAt');
-    nprogress.done();
   }, sparseTime > 0 ? sparseTime : 200);
 }

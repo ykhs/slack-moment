@@ -2,7 +2,7 @@
   <main class="main">
     <v-content>
       <v-container>
-        <v-layout row>
+        <v-layout column>
           <introduction v-if="needShowSignIn"></introduction>
 
           <template v-if="user.name">

@@ -13,3 +13,8 @@ export function setLoadingStartAt(state, start) {
 export function resetLoadingStartAt(state) {
   state.loadingStartAt = 0;
 }
+
+export function setWindowSize(state, windowSize) {
+  state.windowSize.y = windowSize.y;
+  state.windowSize.x = windowSize.x;
+}

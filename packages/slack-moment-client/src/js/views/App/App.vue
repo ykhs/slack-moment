@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-resize="onResize">
     <app-header
       :user="user"
       :needShowSignIn="needShowSignIn"
@@ -14,6 +14,7 @@
 import {
   mapState,
   mapGetters,
+  mapMutations,
   mapActions
 } from 'vuex'
 import AppHeader from './AppHeader.vue'
@@ -34,7 +35,14 @@ export default {
       'watchAuth',
       'tokenSignInIfNeeded',
       'signOut'
-    ])
+    ]),
+    ...mapMutations(['setWindowSize']),
+    onResize () {
+      this.setWindowSize({
+        y: window.innerHeight,
+        x: window.innerWidth
+      });
+    }
   },
   components: {
     AppHeader,

@@ -40,10 +40,13 @@ export default {
 </script>
 
 <style scoped>
-.SM-Message__title {
+.SM-Message a.list__tile {
   height: auto;
 }
 .SM-Message__title {
+  height: auto;
+  word-break: break-all;
+  word-wrap: break-word;
   white-space: normal;
   overflow: visible;
 }

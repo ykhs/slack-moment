@@ -1,24 +1,40 @@
 <template>
   <main>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout
-          justify-center
-          align-center
-        >
+      <v-container fluid grid-list-md>
+        <v-layout row>
 
-          <v-list two-line>
-            <template v-for="(message, index) in messages">
-              <Message
-                :selectMessages="selectMessages"
-                :message="message"
-                :toggleSelectMessage="toggleSelectMessage"
-                :findMemberById="findMemberById"
-                :formatTs="formatTs"
-              ></Message>
-            </template>
-            <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
-          </v-list>
+          <v-flex xs-6 class="SM-Messages">
+            <v-card>
+              <div class="SM-Messages__scroller">
+                <v-list two-line>
+                  <template v-for="(message, index) in messages">
+                    <Message
+                      :selectMessages="selectMessages"
+                      :message="message"
+                      :toggleSelectMessage="toggleSelectMessage"
+                      :findMemberById="findMemberById"
+                      :formatTs="formatTs"
+                    ></Message>
+                  </template>
+                  <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading"></infinite-loading>
+                </v-list>
+              </div>
+            </v-card>
+          </v-flex>
+
+          <v-flex xs-6 class="SM-Preview">
+            <v-card>
+              <div class="SM-Channel__preview">
+                <v-text-field
+                  textarea
+                  readonly
+                  full-width
+                  v-model="formattedMessages"
+                ></v-text-field>
+              </div>
+            </v-card>
+          </v-flex>
 
         </v-layout>
       </v-container>
@@ -83,6 +99,13 @@ export default {
           return (+atime) - (+btime)
         })
         .map(message => message.markdown)
+    },
+    formattedMessages () {
+      let result = `${this.now} に ${this.channelNameLink}で作成したまとめ。\n\n- - -\n\n`;
+      for (const m of this.formatMarkdownMessages) {
+        result += m;
+      }
+      return result;
     },
     channelNameLink () {
       const { channel, team } = this
@@ -150,3 +173,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.SM-Messages {
+  width: 100%;
+}
+.SM-Preview {
+  width: 100%;
+}
+.SM-Messages__scroller {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex: 1;
+}
+</style>

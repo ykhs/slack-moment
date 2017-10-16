@@ -1,5 +1,5 @@
 <template>
-  <v-card flat class="SM-AppHeader teal lighten-1">
+  <v-card flat class="SM-AppHeader teal lighten-1 mb-4">
     <v-container>
       <v-layout row wrap>
 

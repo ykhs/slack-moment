@@ -2,23 +2,20 @@
   <main class="main">
     <v-content>
       <v-container>
-        <introduction v-if="needShowSignIn"></introduction>
+        <v-layout row wrap>
+          <v-flex xs-12>
+            <introduction v-if="needShowSignIn"></introduction>
 
-        <template v-if="user.name">
-          <v-breadcrumbs divider=">">
-            <v-breadcrumbs-item disabled>ホーム</v-breadcrumbs-item>
-            <v-breadcrumbs-item disabled>チャンネル一覧</v-breadcrumbs-item>
-          </v-breadcrumbs>
-
-          <v-card class="pa-4">
-            <v-card-title primary-title>
-              <div class="title">
-                Slack Momentは、Slackのログをまとめて書き出すサービスです。
-              </div>
-            </v-card-title>
-          </v-card>
-        </template>
-
+            <template v-if="user.name">
+              <v-card class="pa-4">
+                <contents-header>
+                  Channels
+                </contents-header>
+                <channels></channels>
+              </v-card>
+            </template>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
   </main>
@@ -30,6 +27,8 @@ import {
   mapGetters
 } from 'vuex'
 import Introduction from '../components/Introduction.vue';
+import Channels from '../components/Channels.vue';
+import ContentsHeader from '../components/ContentsHeader.vue';
 
 export default {
   name: 'Root',
@@ -38,7 +37,9 @@ export default {
     ...mapGetters(['needShowSignIn'])
   },
   components: {
-    Introduction
+    Introduction,
+    Channels,
+    ContentsHeader
   },
   data () {
     return {

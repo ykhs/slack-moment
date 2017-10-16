@@ -5,7 +5,7 @@
         <v-layout row>
 
           <v-flex xs-6 class="SM-Messages">
-            <v-card>
+            <v-card class="pa-2" :style="cardHeight">
               <div class="SM-Messages__scroller">
                 <v-container>
                   <v-layout column>
@@ -26,15 +26,12 @@
           </v-flex>
 
           <v-flex xs-6 class="SM-Preview">
-            <v-card>
-              <div class="SM-Channel__preview">
-                <v-text-field
-                  textarea
-                  readonly
-                  full-width
-                  v-model="formattedMessages"
-                ></v-text-field>
-              </div>
+            <v-card class="pa-4" :style="cardHeight">
+              <textarea
+                class="SM-Preview__textArea"
+                readonly
+                v-model="formattedMessages"
+              ></textarea>
             </v-card>
           </v-flex>
 
@@ -57,6 +54,7 @@ import Message from '../components/Message.vue'
 export default {
   name: 'Channel',
   computed: {
+    ...mapState(['windowSize']),
     ...mapState('slack', [
       'accessToken',
       'selectMessages',
@@ -118,6 +116,12 @@ export default {
       const { domain } = team
 
       return `[#${channelName}](https://${domain}.slack.com/archives/${channel.name}/)`
+    },
+    cardHeight () {
+      const windowHeight = this.windowSize.y;
+      return {
+        height: `${windowHeight - 200}px`
+      };
     }
   },
   methods: {
@@ -189,5 +193,12 @@ export default {
   overflow-x: hidden;
   overflow-y: scroll;
   flex: 1;
+  height: 100%;
+}
+.SM-Preview__textArea {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  background: #ececed;
 }
 </style>

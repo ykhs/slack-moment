@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "IE 11"]
+      },
+      "modules": false,
+      "loose": true
+    }]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-async-to-generator"
+  ]
+}

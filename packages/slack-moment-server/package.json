@@ -1,0 +1,24 @@
+{
+  "name": "slack-moment-server",
+  "license": "MIT",
+  "version": "0.1.0",
+  "engines": {
+    "node": "8.6.0"
+  },
+  "scripts": {
+    "server:dev": "cross-env DEBUG=slack-moment:* nodemon bin/server.js",
+    "server:prod": "cross-env NODE_ENV=production node bin/server.js"
+  },
+  "dependencies": {
+    "@slack/client": "3.14.1",
+    "basic-auth-connect": "1.0.0",
+    "body-parser": "1.18.1",
+    "cookie-parser": "1.4.3",
+    "express": "4.16.2",
+    "firebase-admin": "5.4.2",
+    "morgan": "1.9.0",
+    "pify": "3.0.0",
+    "pug": "2.0.0-beta11",
+    "simple-oauth2": "1.3.0"
+  }
+}

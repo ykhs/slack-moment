@@ -1,0 +1,28 @@
+{
+  "name": "slack-moment-client",
+  "license": "MIT",
+  "version": "0.1.0",
+  "scripts": {
+    "clean": "rimraf public",
+    "build:webpack": "webpack --config webpack/webpack.dev.config.js",
+    "build": "npm-run-all -s clean build:webpack",
+    "watch:webpack": "webpack --watch --config webpack/webpack.dev.config.js",
+    "watch": "npm-run-all -s clean watch:webpack",
+    "release:webpack":
+      "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.config.js",
+    "release": "npm-run-all -s clean release:webpack"
+  },
+  "dependencies": {
+    "axios": "0.16.2",
+    "fecha": "2.3.1",
+    "firebase": "4.5.1",
+    "font-awesome": "4.7.0",
+    "js-cookie": "2.1.4",
+    "vue": "2.5.2",
+    "vue-infinite-loading": "2.2.1",
+    "vue-router": "3.0.1",
+    "vuetify": "0.16.7",
+    "vuex": "3.0.0",
+    "vuex-router-sync": "5.0.0"
+  }
+}
